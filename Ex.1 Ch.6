@@ -1,0 +1,39 @@
+//Create 2 initialized and 1 uninitialized variables. Add 2 class's variables in one object.
+#include <iostream>
+
+using namespace std;
+
+class Int
+{
+private:
+	int a;
+public:
+	Int(): a(0)
+	{}
+	Int(int a1) : a(a1)
+	{}
+	void init()
+	{
+		int a2;
+		a = a2;
+	}
+	void display() const
+	{
+		cout << "Variable is " << a << endl;
+	}
+	void add(Int a1, Int a2)
+	{
+		a = a1.a + a2.a;
+	}
+};
+
+int main()
+{
+	Int i1(10);
+	Int i2(5);
+	Int i3;
+	i3.add(i1, i2);
+	i3.display();
+	cin.get();
+	return 0;
+}
