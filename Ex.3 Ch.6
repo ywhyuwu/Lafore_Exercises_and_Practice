@@ -1,0 +1,48 @@
+//Add two time values together (implementing with class)
+//Ex.3 Lafore Chapter 6
+#include <iostream>
+
+using namespace std;
+
+class time
+{
+private:
+	int hours, minutes, seconds;
+public:
+	time() : hours(0), minutes(0), seconds(0)
+	{}
+	time(int h, int m, int s) : hours(h), minutes(m), seconds(s)
+	{}
+	void display() const
+	{
+		cout << "Current time is: " << hours << ":" << minutes << ":" << seconds << endl;
+	}
+	void add(time t1, time t2)
+	{
+		seconds = t1.seconds + t2.seconds;
+		if (seconds > 59)
+		{
+			minutes++;
+			seconds -= 60;
+		}
+		minutes = t1.minutes + t2.minutes;
+		if (minutes > 60)
+		{
+			hours++;
+			minutes -= 60;
+		}
+		hours = t1.hours + t2.hours;
+	}
+};
+
+int main()
+{
+	const time t1(4, 10, 3);
+	const time t2(5, 40, 54);
+	time t3;
+	t3.add(t1, t2);
+	t3.display();
+	cout << endl;
+	cin.get();
+	return 0;
+}
