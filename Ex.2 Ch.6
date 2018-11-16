@@ -1,0 +1,51 @@
+// When car passed, total car count increments. If car is paying, total money increases. If not, something does not changes.
+// If enters 'n', loop terminates.
+#include <iostream>
+
+using namespace std;
+
+const double TAX = 0.5;
+
+class tollBooth
+{
+private:
+	unsigned int totalCars;
+	double totalMoney;
+public:
+	tollBooth(): totalCars(0), totalMoney(0)  //initialize total cars and cash to 0
+	{}
+	void payingCar()
+	{
+		totalCars++;
+		totalMoney = totalMoney + TAX;
+	}
+	void noPayCar()
+	{
+		totalCars++;
+	}
+	void display() const
+	{
+		cout << "Total cars: " << totalCars << endl;
+		cout << "Total Money: " << totalMoney << endl;
+	}
+};
+
+int main()
+{
+	tollBooth c1;
+	char ch;
+	cout << "Press 1 to increment paying car and 2 to increment no-paying car." << endl;
+	do
+	{
+		cin >> ch;
+		switch (ch)
+		{
+		case '1': c1.payingCar(); c1.display(); break;
+		case '2': c1.noPayCar(); c1.display(); break;
+		case 'n': break;
+		default: cout << "Something went wrong."; break;
+		}
+	} while (ch != 'n');
+	cin.get();
+	return 0;
+}
