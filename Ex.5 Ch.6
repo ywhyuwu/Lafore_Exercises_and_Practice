@@ -1,0 +1,47 @@
+//User enters the date and it displays in year/month/day format.
+#include <iostream>
+
+using namespace std;
+
+//5
+class date
+{
+private:
+	unsigned int year;
+	int month;
+	int day;
+public:
+	date() : year(0), month(0), day(0)
+	{}
+	void getdate()
+	{
+		cout << "Enter the date.\nEnter years: "; cin >> year;
+		cout << "Enter months: "; cin >> month;
+		cout << "Enter days: "; cin >> day;
+	}
+	void display()
+	{
+		while (day > 31)
+		{
+			month++;
+			day -= 31;
+		}
+		while (month > 12)
+		{
+			year++;
+			month-=12;
+		}
+		cout << "Current date is: " << year << "/" << month << "/" << day;
+	}
+};
+
+
+int main()
+{
+	date d1;
+	d1.getdate();
+	d1.display();
+	cin.get();
+	cin.get();
+	return 0;
+}
