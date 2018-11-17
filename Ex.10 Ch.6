@@ -1,0 +1,65 @@
+//User enters coordinates of the ship and then it displays with ship's number.
+#include <iostream>
+
+using namespace std;
+
+//10
+class ship
+{
+private:
+	static int count;
+	int number, degrees;
+	float minutes;
+public:
+	ship(): minutes(0), degrees(0)
+	{
+		count++;
+		number = count;
+	}
+	void getdata()
+	{
+		cout << "Enter coordinates of the ship(degrees and minutes): "; cin >> degrees >> minutes;
+	}
+	void display()
+	{
+		while (minutes > 60.0)
+		{
+			degrees++;
+			minutes -= 60;
+		}
+		cout << "The ship number " << number << " stay at " << degrees << '\xF8' << minutes << endl;
+	}
+};
+
+
+int ship::count = 0;
+
+int main()
+{
+	ship s1, s2, s3;
+	for (int i = 0; i < 44; i++)
+		cout << "*";
+	cout << endl;
+	s1.getdata();
+	for (int i = 0; i < 44; i++)
+		cout << "*";
+	cout << endl;
+	s2.getdata();
+	for (int i = 0; i < 44; i++)
+		cout << "*";
+	cout << endl;
+	s3.getdata();
+	for (int i = 0; i < 44; i++)
+		cout << "*";
+	cout << endl;
+	s1.display();
+	s2.display();
+	s3.display();
+	for (int i = 0; i < 44; i++)
+		cout << "*";
+	cin.get();
+	cin.get();
+	cin.get();
+	cin.get();
+	return 0;
+}
