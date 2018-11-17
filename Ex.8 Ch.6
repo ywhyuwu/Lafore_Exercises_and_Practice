@@ -1,0 +1,41 @@
+//When object created, total count increments and every object have its own serial number.
+#include <iostream>
+
+using namespace std;
+
+//6
+class serial
+{
+private:
+	static int count;
+	int numb;
+public:
+	serial()
+	{
+		count++;
+		numb = count;
+	}
+	void ret() const
+	{
+		cout << "I'm object number " << numb << endl;
+	}
+};
+
+int serial::count = 0;
+
+int main()
+{
+	serial s1, s2, s3, s4, s5, s6;
+	s1.ret();
+	s2.ret();
+	s3.ret();
+	s4.ret();
+	s5.ret();
+	s6.ret();
+	cin.get();
+	cin.get();
+	cin.get();
+	cin.get();
+	cin.get();
+	return 0;
+}
