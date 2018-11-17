@@ -1,0 +1,40 @@
+//User enters the number of employees and compensation for them for 3 times. Then it displays.
+#include <iostream>
+
+using namespace std;
+
+//4 
+class employee
+{
+private:
+	unsigned int emp;
+	float comp;
+public:
+	employee(): emp(0), comp(0)
+	{}
+	void getdata()
+	{
+		cout << "Enter the number of emps: " << endl; cin >> emp;
+		cout << "Enter the compensation: " << endl; cin >> comp;
+	}
+	void display() const
+	{
+		cout << "Employees: " << emp << endl;
+		cout << "Compensation: " << comp << endl;
+	}
+};
+
+int main()
+{
+	employee e1, e2, e3;
+	e1.getdata();
+	e2.getdata();
+	e3.getdata();
+	e1.display();
+	e2.display();
+	e3.display();
+	cout << "That's all.";
+	cin.get();
+	cin.get();
+	return 0;
+}
