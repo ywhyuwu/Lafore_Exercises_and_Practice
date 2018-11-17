@@ -1,0 +1,79 @@
+// User enters the number of emoloyee, the date of the hire and employee's profession.
+//Then it displays.
+#include <iostream>
+
+using namespace std;
+
+//6
+class employee
+{
+private:
+	unsigned int emp;
+	enum etype { laborer, secretary, manager, accountant, executive, researcher };
+	char prof;
+	unsigned int year;
+	int month;
+	int day;
+public:
+	employee() : emp(0), year(0), month(0), day(0)
+	{}
+	void getdata()
+	{
+		cout << "Enter the number of employee: "; cin >> emp;
+		cout << endl << "Enter year, month and day of the employee's hire: "; cin >> year >> month >> day;
+		cout << "Enter the employee's profession(l, s, m, a, e, r): "; cin >> prof;
+		cout << endl;
+	}
+	void display()
+	{
+		cout << endl;
+		cout << "Employee: " << emp << endl;
+		while (day > 31)
+		{
+			month++;
+			day -= 31;
+		}
+		while (month > 12)
+		{
+			year++;
+			month -= 12;
+		}
+		cout << "The date of the hire: " << year << "/" << month << "/" << day << endl;
+		switch (prof)
+		{
+		case 'l': cout << "Profession: laborer." << endl; break;
+		case 's': cout << "Profession: secretary." << endl; break;
+		case 'm': cout << "Profession: manager." << endl; break;
+		case 'a': cout << "Profession: accountant." << endl; break;
+		case 'e': cout << "Profession: executive." << endl; break;
+		case 'r': cout << "Profession: researcher." << endl; break;
+		}
+
+	}
+};
+
+void star();
+
+int main()
+{
+	employee e1, e2;
+	e1.getdata();
+	e2.getdata();
+	star();
+	e1.display();
+	star();
+	e2.display();
+	star();
+	cin.get();
+	cin.get();
+	cin.get();
+	cin.get();
+	cin.get();
+	return 0;
+}
+
+void star()
+{
+	for (int i = 0; i < 44; i++)
+		cout << "*";
+}
