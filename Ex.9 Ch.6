@@ -1,0 +1,42 @@
+//Add two fractions and display it.
+#include <iostream>
+
+using namespace std;
+
+//9
+class fraction
+{
+private:
+	int numerator, denomitator;
+public:
+	fraction() : numerator(0), denomitator(0)
+	{}
+	void getdata()
+	{
+		cout << "Enter numerator and denomitator: ";
+		cin >> numerator >> denomitator;
+	}
+	void add(fraction f1, fraction f2)
+	{
+		int num1, denom1;
+		num1 = (f1.numerator*f2.denomitator) + (f1.denomitator*f2.numerator);
+		denom1 = f1.denomitator * f2.denomitator;
+		cout << f1.numerator << "/" << f1.denomitator << " + " << f2.numerator << "/" << f2.denomitator << " = " << num1 << "/" << denom1 << endl;
+	}
+};
+
+
+int main()
+{
+	fraction f1, f2, f3;
+	char ch = 'y';
+	do
+	{
+		f1.getdata();
+		f2.getdata();
+		f3.add(f1, f2);
+		cout << "Do you wanna continue? Press y for yes and n for terminate loop. "; cin >> ch;
+	} while (ch != 'n');
+	cin.get();
+	return 0;
+}
