@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+class stack
+{
+private:
+	static const int MAX = 10; //size of array
+	int st[MAX];
+	int top;
+public:
+	stack()                    //constructor initialize top of stack to 0
+	{
+		top = 0;
+	}
+	int pop()                  //pop variable from stack
+	{
+		return st[top--];
+	}
+	void push(int var)         //push variable to stack
+	{
+		st[++top] = var;
+	}
+};
+
+int main()
+{
+	stack s1;
+	s1.push(10);                        //increments top (create new top point) and push variable to that point (x3)
+	s1.push(30);
+	s1.push(69);
+	cout << "1: " << s1.pop() << endl;  //return value at that point and then decrements top point
+	cout << "2: " << s1.pop() << endl;
+	cout << "3: " << s1.pop() << endl;
+	return 0;
+}
