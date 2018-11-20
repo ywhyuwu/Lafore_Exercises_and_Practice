@@ -1,0 +1,31 @@
+//1
+#include <iostream>
+#include <cstring>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	const int MAX = 30;
+	void reverseit(char s[]);
+	char arr[MAX];
+	cout << "Enter a string: "; cin.get(arr, MAX);
+	reverseit(arr);
+	cout << "Reverse string: " << arr << endl;
+	cin.get();
+	cin.get();
+	cin.get();
+	return 0;
+}
+
+void reverseit(char s[])
+{
+	int len = strlen(s);
+	for (int i = 0; i < len / 2; i++)
+	{
+		char temp = s[i];
+		s[i] = s[len - i - 1];
+		s[len - i - 1] = temp;
+	}
+}
