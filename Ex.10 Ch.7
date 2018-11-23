@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class matrix
+{
+private:
+	int arr[10][10];
+public:
+	matrix(int var1, int var2)
+	{
+		arr[var1][var2];
+	}
+
+	void putel(int v1, int v2, int temp)
+	{
+		arr[v1][v2] = temp;
+	}
+	int getel(int v1, int v2)
+	{
+		return arr[v1][v2];
+	}
+};
+
+
+int main()
+{
+	matrix m1(3, 4);
+	int temp = 12345;
+	m1.putel(7, 4, temp);
+	temp = m1.getel(7, 4);
+	cout << temp << endl;
+	cin.get();
+	cin.get();
+	return 0;
+}
