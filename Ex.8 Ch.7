@@ -1,0 +1,42 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+const int LIMIT = 10;
+class safearray
+{
+private:
+	int arr[LIMIT];
+public:
+	void putel(int id, int temp)
+	{
+		if (id >= 0 && id <= LIMIT - 1)
+		{
+			arr[id] = temp;
+		}
+	}
+	int getel(int id)
+	{
+		int temp;
+		if (id >= 0 && id <= LIMIT - 1)
+		{
+			temp = arr[id];
+			return temp;
+		}
+	}
+};
+int main()
+{
+	safearray s1;
+	int temp = 12345;
+	int i;
+	s1.putel(11, temp);
+	i = s1.getel(11);
+	if (i == temp)
+		cout << "Temp is " << i << endl;
+	else
+		cout << "Index is less or more than array capacity. Max capacity is " << LIMIT << "." << endl;
+	cin.get();
+	cin.get();
+	return 0;
+}
