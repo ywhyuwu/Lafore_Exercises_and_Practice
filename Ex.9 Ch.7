@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class queue
+{
+private:
+	static const int MAX = 5;
+	int qu[MAX];
+	int head, tail;
+public:
+	queue()
+	{
+		head = 0;
+		tail = 0;
+	}
+	void put(int var)
+	{
+		qu[tail++] = var;
+		if (head > 0)
+			head--;
+	}
+	int get()
+	{
+		if (tail > 0)
+			tail--;
+		return qu[head++];
+	}
+};
+
+int main()
+{
+	queue q1;
+	q1.put(7);
+	q1.put(6);
+	q1.put(5);
+	q1.put(4);
+	cout << "1: " << q1.get() << endl;
+	cout << "2: " << q1.get() << endl;
+	cout << "3: " << q1.get() << endl;
+	cout << "4: " << q1.get() << endl;
+	cin.get();
+	cin.get();
+	return 0;
+}
