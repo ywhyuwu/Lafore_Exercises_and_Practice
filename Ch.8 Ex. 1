@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+class Distance
+{
+private:
+	int feet;
+	float inches;
+public:
+	Distance() : feet(0), inches(0)
+	{}
+	Distance(int f, float i) : feet(f), inches(i)
+	{}
+	void getdist()
+	{
+		cout << "Enter feet: "; cin >> feet; cout << endl;
+		if (feet < 0)
+			cout << "Feet cannot be smaller than 0. Try again.";
+		cout << "Enter inches: "; cin >> inches; cout << endl;
+		if (inches < 0)
+			cout << "Inches cannot be smaller than 0. Try again.";
+	}
+	void showdist()
+	{
+		cout << feet << "\'-" << inches << '\"' << endl;
+	}
+	Distance operator - (Distance) const;
+};
+
+Distance Distance::operator - (Distance d1) const
+{
+	int ft = feet;
+	float i = inches;
+	if (ft >= d1.feet)
+		ft = feet - d1.feet;
+	else
+		cout << "Feet cannot be negative value." << endl;
+	i = inches - d1.inches;
+	if (i <= 0)
+	{
+		ft--;
+		i += 12;
+	}
+	if (ft < 0)
+		cout << "Distance cannot be negative value." << endl;
+
+
+	return Distance(ft, i);
+}
+
+int main()
+{
+	Distance d1(3, 2.25), d2(3, 4.0), d3;
+	d3 = d1 - d2;
+	d3.showdist();
+	cin.get();
+	cin.get();
+	return 0;
+}
