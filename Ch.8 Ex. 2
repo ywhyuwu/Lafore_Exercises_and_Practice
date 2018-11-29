@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cstring>
+#include <stdlib.h>
+using namespace std;
+
+class String
+{
+private:
+	static const int SZ = 80;
+	char str[SZ];
+public:
+	String()
+	{
+		strcpy_s(str, "");
+	}
+	String(const char s[])
+	{
+		strcpy_s(str, s);
+	}
+	void display()
+	{
+		cout << str;
+	}
+	String operator += (String ss) const
+	{
+		String temp;
+		if (strlen(str) + strlen(ss.str) < SZ)
+		{
+			strcpy_s(temp.str, str);
+			strcat_s(temp.str, ss.str);
+		}
+		else
+			cout << "\n\nString overflow." << endl;
+		return temp;
+	}
+};
+
+int main()
+{
+	String s1 = "Hi! My name is Ilya ";
+	String s2 = "and I'm sixteen years old.";
+	String s3;
+	s3 = s1 += s2;
+	s3.display();
+	cin.get();
+	cin.get();
+	return 0;
+}
