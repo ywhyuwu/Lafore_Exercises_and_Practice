@@ -1,0 +1,73 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+class Int
+{
+private:
+	int var;
+public:
+	Int() : var(0)
+	{}
+	Int(int ii) : var(ii)
+	{}
+	operator int()
+	{
+		return var;
+	}
+	void getvar()
+	{
+		cout << "Enter variable: "; cin >> var;
+		cout << endl;
+	}
+	void display()
+	{
+		cout << "The data is: " << var << endl;
+	}
+	Int checkit(long double check)
+	{
+		if (check > 2147483647.0L || check < -2147483647.0L)
+		{
+			cout << "Operator overflow." << endl;
+			exit(1);
+		}
+		return Int(int(check));
+	}
+	Int operator +(int i)
+	{
+		return checkit(long double(var) + long double(i));
+	}
+	Int operator -(int i)
+	{
+		return checkit(long double(var) - long double(i));
+	}
+	Int operator *(int i)
+	{
+		return checkit(long double(var) * long double(i));
+	}
+	Int operator /(int i)
+	{
+		return checkit(long double(var) / long double(i));
+	}
+};
+
+int main()
+{
+	Int i1 = 423423;
+	Int i2 = 123123;
+	Int i3, i4;
+	i3 = i1 + i2;
+	i3.display();
+	i4 = i1 - i2;
+	i4.display();
+	i3 = i1 * i2;
+	i3.display();
+	i4 = i1 / i2;
+	i4.display();
+	i3 = 2147483647;
+	i4 = -2147483647;
+	i3 = i3 + i1;
+	i4 = i4 - i2;
+	cin.get();
+	return 0;
+}
