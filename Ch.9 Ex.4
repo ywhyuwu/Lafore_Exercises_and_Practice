@@ -1,0 +1,103 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class publication
+{
+private:
+	string s;
+	float price;
+public:
+	void getdata()
+	{
+		cout << "Enter the name of the publication: "; cin >> s;
+		cout << "\nEnter price: "; cin >> price;
+		cout << endl;
+	}
+
+	void putdata() const
+	{
+		cout << "Name: " << s << endl;
+		cout << "Price: " << price << endl;
+	}
+};
+
+
+class book : private publication
+{
+private:
+	int page_count;
+public:
+	void getdata()
+	{
+		publication::getdata();
+		cout << "Enter page count for book: "; cin >> page_count; cout << endl;
+	}
+	void putdata() const
+	{
+		publication::putdata();
+		cout << "Pages: " << page_count << endl;
+	}
+};
+
+class tape : private publication
+{
+private:
+	float play_time;
+public:
+	void getdata()
+	{
+		publication::getdata();
+		cout << "Enter play time: "; cin >> play_time; cout << endl;
+	}
+	void putdata() const
+	{
+		publication::putdata();
+		cout << "Play time: " << play_time << endl;
+	}
+};
+
+class disk : private publication, private tape
+{
+private:
+	enum type { c, d };
+	type t;
+	char ch;
+public:
+	void getdata()
+	{
+		publication::getdata();
+		tape::getdata();
+		cout << "Enter a type of the disk(press c or d): "; cin >> ch;
+		cout << endl;
+	}
+	void putdata() const
+	{
+		publication::putdata();
+		tape::putdata();
+		cout << "Disk type: ";
+		if (ch == 'c')
+			cout << "CD" << endl;
+		else
+			cout << "DVD" << endl;
+	}
+};
+
+int main()
+{
+	book b1;
+	tape t1;
+	disk d1;
+	b1.getdata();
+	t1.getdata();
+	d1.getdata();
+	cout << endl << endl;
+	b1.putdata();
+	cout << endl << endl;
+	t1.putdata();
+	cout << endl << endl;
+	d1.getdata();
+	cin.get();
+	cin.get();
+	return 0;
+}
