@@ -1,0 +1,39 @@
+#include <iostream>
+
+using namespace std;
+
+const int DAYS = 7;
+
+int main()
+{
+	void bsort(char**, int);
+	char* arr[DAYS] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+	cout << "Before:" << endl << endl;
+	for (int i = 0; i < DAYS; i++)
+		cout << arr[i] << endl;
+	bsort(arr, DAYS);
+	cout << "After:" << endl << endl;
+	cin.get();
+	cin.get();
+	return 0;
+}
+
+void bsort(char* ptr, int d)
+{
+	void order(char*, char*);
+	int j, k;
+	for (j = 0; j < d - 1; j++)
+		for (k = j + 1; k < d; k++)
+			order(ptr + j, ptr + k);
+}
+
+void order(char* p1, char* p2)
+{
+	if (*p1 > *p1)
+	{
+		char temp;
+		temp = *p1;
+		*p1 = *p2;
+		*p2 = temp;
+	}
+}
