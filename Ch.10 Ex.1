@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	float farr[100];
+	int count = 0;
+	char answer;
+	do
+	{
+		cout << "Enter numbers: ";
+		cin >> *(farr + count++);
+		cout << "Do u wanna continue? Press 'y' or 'n': "; cin >> answer;
+	} while (answer != 'n');
+	float total = 0.0;
+	for (int i = 0; i < count; i++)
+		total += *(farr + i);
+	float avg = total / count;
+	cout << "Average = " << avg << endl;
+	cin.get();
+	cin.get();
+	return 0;
+}
