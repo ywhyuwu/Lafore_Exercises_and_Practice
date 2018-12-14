@@ -1,0 +1,79 @@
+#include <iostream>
+
+using namespace std;
+
+class publication
+{
+private:
+	char title[40];
+	float price;
+public:
+	virtual void getdata()
+	{
+		cout << "Enter title: "; cin >> title;
+		cout << "\nEnter price, $: "; cin >> price; cout << endl;
+	}
+	virtual void putdata()
+	{
+		cout << "----------" << title << "----------" << endl;
+		cout << "Price: " << price << "$" << endl;
+	}
+};
+
+class book : public publication
+{
+private:
+	int page;
+public:
+	void getdata()
+	{
+		publication::getdata();
+		cout << "Enter page count: "; cin >> page; cout << endl;
+	}
+	void putdata()
+	{
+		publication::putdata();
+		cout << "Page count: " << page << endl;
+	}
+};
+
+class tape : public publication
+{
+private:
+	float time;
+public:
+	void getdata()
+	{
+		publication::getdata();
+		cout << "Enter time, in minutes: "; cin >> time; cout << endl;
+	}
+	void putdata()
+	{
+		publication::putdata();
+		cout << "Playing time: " << time << endl;
+	}
+};
+int main()
+{
+	publication* arr[100];
+	int n = 0;
+	char ch;
+	do
+	{
+		cout << "Enter book or tape (press b or t): "; cin >> ch; cout << endl;
+		if (ch == 'b')
+			arr[n] = new book;
+		else
+			arr[n] = new tape;
+		arr[n++]->getdata();
+		cout << "Enter more? Press y or n: ";
+		cin >> ch;
+		cout << endl;
+	} while (ch != 'n');
+	for (int i = 0; i < n; i++)
+		arr[i]->putdata();
+	cin.get();
+	cin.get();
+	cin.get();
+	return 0;
+}
