@@ -1,0 +1,53 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class Distance
+{
+private:
+	int feet;
+	float inches;
+public:
+	Distance() : feet(0), inches(0)
+	{}
+	Distance(int f, float i) : feet(f), inches(i)
+	{}
+	void getdata()
+	{
+		cout << "Enter feet: "; cin >> feet;
+		cout << "Enter inches: "; cin >> inches;
+	}
+	void showdata()
+	{
+		cout << "Feet: " << feet << endl;
+		cout << "Inches: " << inches << endl;
+	}
+};
+
+int main()
+{
+	Distance d1;
+	char ch;
+	fstream file;
+	file.open("TEST.BAT", ios::binary || ios::app || ios::out || ios::in);
+	do
+	{
+		d1.getdata();
+		file.write((char*)&d1, sizeof(d1));
+		cout << "Enter more? Press y or n: "; cin >> ch; cout << endl;
+	} while (ch != 'n');
+	file.seekg(0);
+
+	file.read((char*)&d1, sizeof(d1));
+	int c = 0;
+	while (!file.eof())
+	{
+		cout << "Distance #" << ++c << ":" << endl;
+		d1.showdata();
+		file.read((char*)&d1, sizeof(d1));
+	}
+	cout << endl << "Done." << endl;
+	cin.get();
+	cin.get();
+	return 0;
+}
